@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build: ./doctor-office-backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+  frontend:
+    build: ./doctor-office-frontend
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+volumes:
+  mongo-data:
