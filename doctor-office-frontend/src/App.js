@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const res = await fetch('/appointments');
+        const res = await fetch('http://localhost:3000/appointments');
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
@@ -24,7 +24,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('/appointments', {
+    fetch('http://localhost:3000/appointments', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
